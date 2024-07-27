@@ -1,0 +1,143 @@
+package com.project;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class MovieTicketBooking {
+	
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String yourChoice=null;
+        
+        do {
+            System.out.println("Choose the choice");
+            System.out.println("1. Tamil Movie");
+            System.out.println("2. Telugu Movie");
+       
+            int choice = scanner.nextInt();
+            
+            switch(choice) {
+                case 1:
+                    System.out.println("Welcome to Tamil Movies");
+                    HashMap<String, Double> movies = new HashMap<>();
+                    movies.put("1. Hero", 60.0);
+                    movies.put("2. VTV", 140.0);
+                    movies.put("3. Maveeran", 240.0);
+                    
+                    System.out.println("Available Movies:");
+                    for (String movie : movies.keySet()) {
+                        System.out.println(movie);
+                    }
+                    
+                    System.out.println("Select the movie number:");
+                    int movieChoice = scanner.nextInt();
+                    String selectedMovie = null;
+                    
+                    switch(movieChoice) {
+                        case 1:
+                            selectedMovie = "1. Hero";
+                            break;
+                        case 2:
+                            selectedMovie = "2. VTK";
+                            break;
+                        case 3:
+                            selectedMovie = "3. Maveeran";
+                            break;
+                        default:
+                            System.out.println("Invalid movie choice.");
+                            continue;
+                    }
+                    
+                    System.out.println("You have booked tickets for: " + selectedMovie);
+                    double ticketPrice = movies.get(selectedMovie);
+                    System.out.println("Ticket price: ₹" + ticketPrice);
+                    System.out.print("Enter the number of tickets: ");
+                    int numberOfTickets = scanner.nextInt();
+                    
+                    double totalPrice = numberOfTickets * ticketPrice;
+                    System.out.println("Booking Details:");
+                    System.out.println("Movie: " + selectedMovie);
+                    System.out.println("Number of tickets: " + numberOfTickets);
+                    System.out.println("Total price: ₹" + totalPrice);
+                    System.out.println("Do you want cancel!");
+                    String choiceCancel = scanner.next();
+                    if(choiceCancel.equals("yes")) {
+                    	 System.out.print("Enter the number of tickets to cancel: ");
+                         numberOfTickets = scanner.nextInt();
+                         double ticketcount = numberOfTickets *ticketPrice;
+                         double cancelTicket = ticketcount - totalPrice;
+                         System.out.println(cancelTicket);
+                    }
+                    
+                    break;
+                case 2:
+                    System.out.println("Welcome to Telugu Movies");
+                    HashMap<String, Double> Telugumovies = new HashMap<>();
+                    Telugumovies.put("1. Kuntur kaaram", 60.0);
+                    Telugumovies.put("2. Jersey", 140.0);
+                    Telugumovies.put("3. Sita Ramam", 240.0);
+                    
+                    System.out.println("Available Movies:");
+                    for (String movie : Telugumovies.keySet()) {
+                        System.out.println(movie);
+                    }
+                    
+                    System.out.println("Select the movie number:");
+                     movieChoice = scanner.nextInt();
+                   
+                    
+                    switch(movieChoice) {
+                        case 1:
+                            selectedMovie = "1. Kuntur kaaram";
+                            break;
+                        case 2:
+                            selectedMovie = "2. Jersey";
+                            break;
+                        case 3:
+                            selectedMovie = "3. Sita Ramam";
+                            break;
+                        default:
+                            System.out.println("Invalid movie choice.");
+                            continue;
+                    }
+                    
+                    System.out.println("You have booked tickets for: " + selectedMovie);
+                     ticketPrice = Telugumovies.get(selectedMovie);
+                    System.out.println("Ticket price: ₹" + ticketPrice);
+                    System.out.print("Enter the number of tickets: ");
+                   numberOfTickets = scanner.nextInt();
+                    
+                     totalPrice = numberOfTickets * ticketPrice;
+                    System.out.println("Booking Details:");
+                    System.out.println("Movie: " + selectedMovie);
+                    System.out.println("Number of tickets: " + numberOfTickets);
+                    System.out.println("Total price: ₹" + totalPrice);
+                    System.out.println("Do you want cancel!!!");
+                   choiceCancel = scanner.next();
+                    if(choiceCancel.equals("yes")) {
+                    	 System.out.print("Enter the number of tickets to cancel: ");
+                         numberOfTickets = scanner.nextInt();
+                         double ticketcount = numberOfTickets *ticketPrice;
+                         double cancelTicket = ticketcount - totalPrice;
+                         System.out.println(cancelTicket);
+                    }
+                    
+                    break;
+                    
+                
+                default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+            }
+            
+            System.out.println("Do you want to continue? (yes/no)");
+            yourChoice = scanner.next();
+            
+        } while(yourChoice.equalsIgnoreCase("yes"));
+        
+        if(yourChoice.equalsIgnoreCase("no")) {
+            System.out.println("Thankyou");
+        }
+        
+        scanner.close();
+    }
+}
